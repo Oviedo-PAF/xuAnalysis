@@ -877,9 +877,9 @@ class tW5TeV(analysis):
             if nBtag >= 2:
               self.FillDYHistosElMu(self.selLeptons, ich, '2btag')
 
-      ### WW selec
-      if (l1.p+l0.p).Pt() > 20 and nJets == 0 and pmet.Pt() > 25:
-        self.FillAll(ich, lev.ww, isyst, leps, jets, pmet)
+      #### WW selec
+      #if (l1.p+l0.p).Pt() > 20 and nJets == 0 and pmet.Pt() > 25:
+        #self.FillAll(ich, lev.ww, isyst, leps, jets, pmet)
   
       ### Z Veto + MET cut
       if ich == ch.MuMu or ich == ch.ElEl:
@@ -893,12 +893,12 @@ class tW5TeV(analysis):
         self.FillAll(ich,lev.MET,isyst,leps,jets,pmet)
         if self.isTTnom and isyst == systematic.nom: self.FillLHEweights(t, ich, lev.MET)
 
-      ### 2 jets
-      if nJets < 2: continue
-      self.FillAll(ich, lev.jets2, isyst, leps, jets, pmet)
-      if self.isTTnom and isyst == systematic.nom: self.FillLHEweights(t, ich, lev.jets2)
+      #### 1 jet or more
+      #self.FillAll(ich, lev.jets2, isyst, leps, jets, pmet)
+      #if self.isTTnom and isyst == systematic.nom: self.FillLHEweights(t, ich, lev.jets2)
 
-      ### 1 b-tag, CSVv2 Medium
-      if nBtag < 1: continue 
+      ### 1j1b, CSVv2 Medium
+      if nJets != 1: continue
+      if nBtag != 1: continue
       self.FillAll(ich, lev.btag1, isyst, leps, jets, pmet)
       if self.isTTnom and isyst == systematic.nom: self.FillLHEweights(t, ich, lev.btag1)
