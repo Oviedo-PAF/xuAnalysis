@@ -831,6 +831,7 @@ class tW5TeV(analysis):
       self.isrUp = t.PSWeight[2]
       self.fsrUp = t.PSWeight[3]
  
+
     ### Event selection
     ###########################################
     self.SetWeight(systematic.nom)
@@ -877,10 +878,7 @@ class tW5TeV(analysis):
             if nBtag >= 2:
               self.FillDYHistosElMu(self.selLeptons, ich, '2btag')
 
-      #### WW selec
-      #if (l1.p+l0.p).Pt() > 20 and nJets == 0 and pmet.Pt() > 25:
-        #self.FillAll(ich, lev.ww, isyst, leps, jets, pmet)
-  
+
       ### Z Veto + MET cut
       if ich == ch.MuMu or ich == ch.ElEl:
         if abs(InvMass(l0,l1) - 91) < 15: continue
@@ -893,9 +891,11 @@ class tW5TeV(analysis):
         self.FillAll(ich,lev.MET,isyst,leps,jets,pmet)
         if self.isTTnom and isyst == systematic.nom: self.FillLHEweights(t, ich, lev.MET)
 
-      #### 1 jet or more
+
+      ### 2jetslevel --- DISABLED
       #self.FillAll(ich, lev.jets2, isyst, leps, jets, pmet)
       #if self.isTTnom and isyst == systematic.nom: self.FillLHEweights(t, ich, lev.jets2)
+
 
       ### 1j1b, CSVv2 Medium
       if nJets != 1: continue
