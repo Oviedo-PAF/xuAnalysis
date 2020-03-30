@@ -13,7 +13,7 @@ indexpath="/nfs/fanae/user/vrbouza/www/index.php"
 savepath=""
 storagepath="/pool/cienciasrw/userstorage/vrbouza/proyectos/TW_inclusivo_run2/"
 webpath="/nfs/fanae/user/vrbouza/www/Proyectos/tw_5tev/results"
-sourcepath="../temptW5TeV/*"
+sourcepath="../temp/tW5TeV/*"
 
 if [ "$1" == "w" ] || [ "$1" == "web" ]; then
   echo "===> Copying results to the web!"
@@ -23,7 +23,7 @@ if [ "$1" == "w" ] || [ "$1" == "web" ]; then
   
   echo " "
   echo "Copying results..."
-  rsync -arvzP ../temp_results/* $webpath
+  rsync -arvzP ../temp/results/* $webpath
   echo "Copying index.php to all subfolders..."
   find $webpath -type d -exec cp $indexpath {} \;
   echo " "
@@ -53,7 +53,7 @@ elif [ "$1" == "r" ] || [ "$1" == "results" ]; then
   echo " "
   echo "Copying results..."
   savepath=$savepath$slash
-  rsync -arvzP ../../temp_TW/ $savepath
+  rsync -arvzP ../../temp/tW5TeV/ $savepath
 
   echo " "
   echo "Done!"
